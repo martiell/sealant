@@ -1,0 +1,22 @@
+{
+  "name": "sealant",
+  "version": "0.0.1",
+  "description": "NPM Shrinkwrap wrapper",
+  "author": "Martin Ellis <martin.ellis@gov.scot>",
+  "license": "MIT",
+  "main": "index.js",
+  "bin": {
+    "sealant": "./bin/sealant"
+  },
+  "directories": [
+      "bin",
+      "src"
+  ],
+  "keywords": [
+    "npm",
+    "shrinkwrap"
+  ],
+  "dependencies": {
+    "json-stable-stringify": "^1.0.1"
+  }
+}

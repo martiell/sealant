@@ -1,0 +1,14 @@
+{
+  "name": "sealant",
+  "version": "0.0.1",
+  "dependencies": {
+    "json-stable-stringify": {
+      "version": "1.0.1",
+      "dependencies": {
+        "jsonify": {
+          "version": "0.0.0"
+        }
+      }
+    }
+  }
+}
