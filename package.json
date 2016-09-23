@@ -1,6 +1,6 @@
 {
   "name": "sealant",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "NPM Shrinkwrap wrapper",
   "author": "Martin Ellis <martin.ellis@gov.scot>",
   "license": "MIT",
