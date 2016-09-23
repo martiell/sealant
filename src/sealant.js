@@ -1,10 +1,11 @@
 #!/usr/bin/env node
+
 var fs = require('fs'),
     cp = require('child_process'),
     stringify = require('json-stable-stringify'),
     excludes = process.argv.slice(2),
     warnings = false,
-    repo;
+    repo = process.env.npm_config_registry;
 
 function warn(package, resolved) {
     if (!warnings) {
@@ -61,42 +62,7 @@ function rewrite() {
     fs.writeFileSync('npm-shrinkwrap.json', json, { options: "utf8" });
 }
 
-function shrinkwrap() {
-    cp.exec('npm shrinkwrap --dev', {stdio: [0,1,2]}, function(err, stdout, stderr) {
-        if (!err) {
-            rewrite();
-            if (warnings) {
-                console.log();
-            }
-        } else {
-            console.log('Running shrinkwrap failed. Is node_modules directory is consistent with package.json?');
-            if (stdout) {
-                console.log(stdout);
-            }
-            if (stderr) {
-                console.log(stderr);
-            }
-            process.exit(1);
-        }
-    });
+rewrite();
+if (warnings) {
+    console.log();
 }
-
-function registry(callback) {
-    cp.exec('npm config get registry', function(err, stdout, stderr) {
-        if (!err) {
-            repo = stdout.trim();
-            callback();
-        } else {
-            console.log('ERROR: Could not determine npm registry.');
-        }
-    });
-}
-
-fs.lstat('npm-shrinkwrap.json', function(err, stat) {
-    var packageJson = fs.lstatSync('package.json');
-    if (err || packageJson.mtime > stat.mtime) {
-        registry(shrinkwrap);
-    } else {
-        console.log('npm-shrinkwrap.json is up to date with package.json');
-    }
-});
