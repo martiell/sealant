@@ -1,17 +1,10 @@
-#!/bin/sh -e
+#!/bin/sh -eu
 
-tmp="$PWD"
+export SEALANT_DIR="$PWD"
 cd $(dirname "$0")
 file="$(basename "$0")"
 while file=$(readlink "$file"); do
   cd $(dirname "$file")
 done
-dir=$(pwd)/..
-cd "$tmp"
-if [ "$(basename "$PWD")" = "node_modules" ]; then
-  cd ..
-fi
-if [ -z "$npm_config_registry" ]; then
-  export npm_config_registry=$(npm config get registry)
-fi
-node $dir/src/sealant.js "$@"
+dir="$(pwd)/.."
+node "${dir}/src/sealant.js" "$@"

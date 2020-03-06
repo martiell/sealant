@@ -1,21 +1,20 @@
 {
   "name": "sealant",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "NPM postshrinkwrap script",
   "author": "Martin Ellis <martin.ellis@gov.scot>",
   "license": "MIT",
   "bin": {
     "sealant": "./bin/sealant"
   },
-  "directories": [
-      "bin",
-      "src"
-  ],
+  "directories": {
+    "lib": "src"
+  },
   "keywords": [
     "npm",
     "shrinkwrap"
   ],
   "dependencies": {
-    "json-stable-stringify": "^1.0.1"
+    "es6-json-stable-stringify": "^2.0.2"
   }
 }
