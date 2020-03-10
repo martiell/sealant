@@ -66,10 +66,10 @@ keyOrder = [
     'version',
     'lockfileVersion',
     'bundled',
-    'optional',
     'resolved',
     'integrity',
     'dev',
+    'optional',
     'requires',
     'dependencies'
 ];
